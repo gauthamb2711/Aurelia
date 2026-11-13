@@ -1,0 +1,6 @@
+{
+  "name": "AURELIA – Luxury Travel & Discovery",
+  "description": "Don't Just Visit Places. Experience Stories. Premium travel discovery, interactive world explorer, DreamTrip itinerary planner, and intelligent budget calculator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
