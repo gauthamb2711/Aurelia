@@ -201,15 +201,15 @@ export default function App() {
             )}
 
             {currentTab === 'map' && (
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6 sm:space-y-8">
                 <div className="text-center max-w-2xl mx-auto space-y-2">
-                  <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#D4AF37]">
+                  <span className={`text-xs uppercase tracking-[0.25em] font-semibold ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                     Geographic Interface
                   </span>
-                  <h1 className="font-editorial text-4xl sm:text-5xl font-normal">
+                  <h1 className="font-editorial text-3xl sm:text-5xl font-normal">
                     Interactive World Explorer
                   </h1>
-                  <p className="text-xs sm:text-sm text-gray-400 font-light">
+                  <p className={`text-xs sm:text-sm font-light ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     Pan across continents, zoom into regional clusters, click pins to preview sanctuaries, or plan your journey directly from the coordinates.
                   </p>
                 </div>

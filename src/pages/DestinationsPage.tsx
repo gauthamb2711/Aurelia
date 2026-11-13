@@ -134,28 +134,28 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
     sortBy !== 'curated';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 sm:space-y-10">
       
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#D4AF37]">
+        <span className={`text-xs uppercase tracking-[0.25em] font-semibold ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
           Global Atlas
         </span>
-        <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-normal leading-tight">
+        <h1 className="font-editorial text-3xl sm:text-5xl md:text-6xl font-normal leading-tight">
           Explore Curated Global Sanctuaries
         </h1>
-        <p className="text-xs sm:text-base text-gray-400 font-light leading-relaxed">
+        <p className={`text-xs sm:text-base font-light leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           Traverse 24 meticulously vetted global destinations spanning 8 continents and territories. Filter by budget, travel cadence, or style.
         </p>
       </div>
 
       {/* Filter and Control Bar */}
-      <div className={`p-6 rounded-3xl border shadow-xl space-y-6 ${
+      <div className={`p-4 sm:p-6 rounded-3xl border shadow-xl space-y-5 sm:space-y-6 ${
         isDark ? 'bg-[#0B132B]/80 border-white/10' : 'bg-white border-[#DFD5C2]'
       }`}>
         
         {/* Top Search & Layout Row */}
-        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 items-center justify-between">
           <div className="relative w-full md:w-96">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
@@ -166,20 +166,20 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
               className={`w-full pl-10 pr-4 py-3 rounded-2xl border text-xs focus:outline-none transition-colors ${
                 isDark 
                   ? 'bg-white/5 border-white/10 text-white placeholder-gray-500 focus:border-[#D4AF37]' 
-                  : 'bg-black/5 border-black/10 text-gray-900 placeholder-gray-400 focus:border-[#9A7B38]'
+                  : 'bg-black/5 border-black/10 text-gray-900 placeholder-gray-500 focus:border-[#9A7B38]'
               }`}
             />
           </div>
 
-          <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+          <div className="flex items-center gap-2 sm:gap-3 w-full md:w-auto justify-between md:justify-end">
             {/* Sorting Dropdown */}
-            <div className="flex items-center gap-2 text-xs">
-              <span className="text-gray-400 hidden sm:inline">Sort:</span>
+            <div className="flex items-center gap-2 text-xs flex-1 sm:flex-initial">
+              <span className={`hidden sm:inline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Sort:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 aria-label="Sort Destinations"
-                className={`py-2.5 px-3 rounded-xl border text-xs font-medium focus:outline-none cursor-pointer ${
+                className={`w-full sm:w-auto py-2.5 px-3 rounded-xl border text-xs font-medium focus:outline-none cursor-pointer ${
                   isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-black/5 border-black/10 text-gray-900'
                 }`}
               >
@@ -193,11 +193,15 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
             </div>
 
             {/* Layout Mode Toggles */}
-            <div className="flex items-center p-1 rounded-xl border border-white/10 bg-white/5">
+            <div className={`flex items-center p-1 rounded-xl border ${
+              isDark ? 'border-white/10 bg-white/5' : 'border-black/10 bg-black/5'
+            }`}>
               <button
                 onClick={() => setLayoutMode('grid')}
-                className={`p-1.5 rounded-lg transition-colors ${
-                  layoutMode === 'grid' ? 'bg-[#D4AF37] text-[#080E1E]' : 'text-gray-400 hover:text-white'
+                className={`p-2 rounded-lg transition-colors ${
+                  layoutMode === 'grid'
+                    ? 'bg-[#D4AF37] text-[#080E1E]'
+                    : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'
                 }`}
                 title="Grid view"
                 aria-label="Grid layout"
@@ -206,8 +210,10 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
               </button>
               <button
                 onClick={() => setLayoutMode('list')}
-                className={`p-1.5 rounded-lg transition-colors ${
-                  layoutMode === 'list' ? 'bg-[#D4AF37] text-[#080E1E]' : 'text-gray-400 hover:text-white'
+                className={`p-2 rounded-lg transition-colors ${
+                  layoutMode === 'list'
+                    ? 'bg-[#D4AF37] text-[#080E1E]'
+                    : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'
                 }`}
                 title="Editorial List view"
                 aria-label="Editorial list layout"
@@ -220,8 +226,9 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
             {hasActiveFilters && (
               <button
                 onClick={handleResetFilters}
-                className="p-2.5 rounded-xl border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 text-xs flex items-center gap-1 transition-colors"
+                className="p-2.5 rounded-xl border border-rose-500/30 text-rose-500 hover:bg-rose-500/10 text-xs flex items-center gap-1 transition-colors"
                 title="Clear all filters"
+                aria-label="Clear all filters"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
               </button>
@@ -231,7 +238,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
 
         {/* Region Filter Buttons */}
         <div>
-          <span className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-2">
+          <span className={`text-[10px] uppercase font-bold tracking-widest block mb-2 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
             Region:
           </span>
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
@@ -239,7 +246,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
               <button
                 key={reg}
                 onClick={() => setSelectedRegion(reg)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap border transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap border transition-all ${
                   selectedRegion === reg
                     ? isDark
                       ? 'bg-[#D4AF37] border-[#D4AF37] text-[#080E1E] font-semibold'
@@ -256,9 +263,9 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
         </div>
 
         {/* Style & Budget Filter Pills */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/10">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t ${isDark ? 'border-white/10' : 'border-black/10'}`}>
           <div>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-gray-400 block mb-2">
+            <span className={`text-[10px] uppercase font-bold tracking-widest block mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
               Travel Style:
             </span>
             <div className="flex items-center gap-1.5 flex-wrap">
@@ -266,10 +273,14 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
                 <button
                   key={st}
                   onClick={() => setSelectedStyle(st)}
-                  className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${
+                  className={`text-[11px] px-2.5 py-1.5 rounded-lg border transition-all ${
                     selectedStyle === st
-                      ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] font-semibold'
-                      : 'border-white/10 bg-white/5 text-gray-400 hover:text-white'
+                      ? isDark
+                        ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] font-semibold'
+                        : 'bg-[#9A7B38]/15 border-[#9A7B38] text-[#8A6F32] font-semibold'
+                      : isDark
+                        ? 'border-white/10 bg-white/5 text-gray-400 hover:text-white'
+                        : 'border-black/10 bg-black/5 text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {st}
@@ -279,7 +290,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
           </div>
 
           <div>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-gray-400 block mb-2">
+            <span className={`text-[10px] uppercase font-bold tracking-widest block mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
               Budget Tier:
             </span>
             <div className="flex items-center gap-1.5 flex-wrap">
@@ -287,10 +298,14 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
                 <button
                   key={bt}
                   onClick={() => setSelectedBudget(bt)}
-                  className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${
+                  className={`text-[11px] px-2.5 py-1.5 rounded-lg border transition-all ${
                     selectedBudget === bt
-                      ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] font-semibold'
-                      : 'border-white/10 bg-white/5 text-gray-400 hover:text-white'
+                      ? isDark
+                        ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] font-semibold'
+                        : 'bg-[#9A7B38]/15 border-[#9A7B38] text-[#8A6F32] font-semibold'
+                      : isDark
+                        ? 'border-white/10 bg-white/5 text-gray-400 hover:text-white'
+                        : 'border-black/10 bg-black/5 text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {bt}
@@ -303,16 +318,18 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
       </div>
 
       {/* Results Header */}
-      <div className="flex items-center justify-between text-xs text-gray-400">
+      <div className={`flex items-center justify-between text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
         <span>Showing {filteredAndSortedDestinations.length} matching destinations</span>
         {selectedRegion !== 'All' && <span>Region: {selectedRegion}</span>}
       </div>
 
       {/* Destinations Grid / List */}
       {filteredAndSortedDestinations.length === 0 ? (
-        <div className="p-16 text-center rounded-3xl border border-dashed border-white/20 bg-white/5 max-w-xl mx-auto space-y-4">
-          <p className="text-lg font-editorial text-white">No Sanctuaries Match Your Criteria</p>
-          <p className="text-xs text-gray-400">
+        <div className={`p-10 sm:p-16 text-center rounded-3xl border border-dashed max-w-xl mx-auto space-y-4 ${
+          isDark ? 'border-white/20 bg-white/5' : 'border-[#DFD5C2] bg-white'
+        }`}>
+          <p className={`text-lg font-editorial ${isDark ? 'text-white' : 'text-gray-900'}`}>No Sanctuaries Match Your Criteria</p>
+          <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Try broadening your budget parameters, selecting "All" regions, or clearing your search term.
           </p>
           <button
@@ -326,7 +343,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
         <div
           className={
             layoutMode === 'grid'
-              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
+              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
               : 'space-y-6'
           }
         >

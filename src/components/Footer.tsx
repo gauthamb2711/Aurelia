@@ -36,13 +36,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
               <h3 className={`font-editorial text-2xl sm:text-3xl font-normal mt-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Receive our monthly private journal on remote archipelagos, forgotten palaces, and slow travel.
               </h3>
-              <p className="text-xs sm:text-sm mt-2 text-gray-400 max-w-xl">
+              <p className={`text-xs sm:text-sm mt-2 max-w-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 No promotions or spam. Just exquisite photography, literary essays, and unlisted travel tips delivered to your inbox on the full moon.
               </p>
             </div>
             <div className="lg:col-span-5">
               {subscribed ? (
-                <div className="flex items-center gap-2 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm">
+                <div className="flex items-center gap-2 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-sm">
                   <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
                   <span>Welcome to our private readership circle. Next dispatch arrives soon.</span>
                 </div>
@@ -79,8 +79,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
       </div>
 
       {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
           
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
@@ -98,11 +98,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
               "Don't Just Visit Places. Experience Stories."
               A high-concept travel discovery and intelligent journey-planning platform dedicated to meaningful global wandering.
             </p>
-            <div className="flex items-center gap-4 pt-2 text-xs">
-              <span className="flex items-center gap-1.5 text-amber-500/80">
+            <div className="flex flex-wrap items-center gap-4 pt-2 text-xs">
+              <span className="flex items-center gap-1.5 text-amber-600 dark:text-amber-500/80">
                 <Shield className="w-3.5 h-3.5" /> No Tracking / Zero Auth
               </span>
-              <span className="flex items-center gap-1.5 text-emerald-500/80">
+              <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-500/80">
                 <Globe className="w-3.5 h-3.5" /> 8 Global Regions
               </span>
             </div>
@@ -113,24 +113,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
             <h4 className={`text-xs uppercase tracking-[0.2em] font-bold mb-4 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Discovery
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs">
               <li>
-                <button onClick={() => onNavigate('explore')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('explore')} className="hover:text-amber-500 transition-colors">
                   All Destinations (24)
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('map')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('map')} className="hover:text-amber-500 transition-colors">
                   Interactive World Map
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('hiddengems')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('hiddengems')} className="hover:text-amber-500 transition-colors">
                   Secret & Hidden Gems
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('compare')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('compare')} className="hover:text-amber-500 transition-colors">
                   Side-by-Side Comparison
                 </button>
               </li>
@@ -142,24 +142,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
             <h4 className={`text-xs uppercase tracking-[0.2em] font-bold mb-4 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Engines
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs">
               <li>
-                <button onClick={() => onNavigate('dreamtrip')} className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3 text-amber-400" /> DreamTrip Planner
+                <button onClick={() => onNavigate('dreamtrip')} className="hover:text-amber-500 transition-colors flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3 text-amber-500" /> DreamTrip Planner
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('budget')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('budget')} className="hover:text-amber-500 transition-colors">
                   TripBudget Cost Engine
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('journal')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('journal')} className="hover:text-amber-500 transition-colors">
                   The Travel Journal
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('experiences')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('experiences')} className="hover:text-amber-500 transition-colors">
                   Travel Quizzes & Checklist
                 </button>
               </li>
@@ -171,24 +171,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
             <h4 className={`text-xs uppercase tracking-[0.2em] font-bold mb-4 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Philosophy
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs">
               <li>
-                <button onClick={() => onNavigate('about')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('about')} className="hover:text-amber-500 transition-colors">
                   The Aurelia Manifesto
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('about')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('about')} className="hover:text-amber-500 transition-colors">
                   Curatorial Standards
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('about')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('about')} className="hover:text-amber-500 transition-colors">
                   Sustainable Exploration
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('about')} className="hover:text-amber-400 transition-colors">
+                <button onClick={() => onNavigate('about')} className="hover:text-amber-500 transition-colors">
                   Contact Concierge
                 </button>
               </li>
@@ -198,10 +198,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isDark }) => {
         </div>
 
         {/* Bottom Attribution */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className={`mt-10 sm:mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-center sm:text-left ${
+          isDark ? 'border-white/10' : 'border-[#DFD5C2]'
+        }`}>
           <p>© 2026 AURELIA. Crafted for discerning global travelers. All rights reserved.</p>
-          <p className="opacity-70 text-[11px]">
-            Estimates are calculated using structured local models. Maps powered by OpenStreetMap contributors.
+          <p className="opacity-75 text-[11px]">
+            Estimates use structured local models. Interactive atlas powered by Leaflet &amp; Esri World Basemaps.
           </p>
         </div>
       </div>

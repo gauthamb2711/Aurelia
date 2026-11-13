@@ -8,8 +8,10 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
+  html,
   body {
     font-family: var(--font-sans);
+    overflow-x: clip;
   }
 
   .font-display {
@@ -19,6 +21,14 @@
   .font-editorial {
     font-family: var(--font-cormorant);
   }
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* Custom smooth scrollbar */
@@ -40,7 +50,29 @@
   background: rgba(180, 150, 90, 0.6);
 }
 
-/* Leaflet map popup & control custom styling */
+/* Leaflet map tile & control custom styling */
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+  background: #081124 !important;
+}
+
+.aurelia-dark-tiles {
+  filter: brightness(0.95) contrast(1.08);
+}
+
+.leaflet-control-zoom a {
+  background-color: #0B132B !important;
+  color: #D4AF37 !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 34px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #141C38 !important;
+}
+
 .leaflet-popup-content-wrapper {
   background: #0B132B !important;
   color: #FAF8F5 !important;

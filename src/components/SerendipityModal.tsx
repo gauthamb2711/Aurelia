@@ -49,15 +49,17 @@ export const SerendipityModal: React.FC<SerendipityModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in">
       <div
-        className={`relative w-full max-w-xl rounded-3xl border shadow-2xl p-6 sm:p-8 text-center overflow-hidden ${
+        className={`relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl border shadow-2xl p-5 sm:p-8 text-center ${
           isDark ? 'bg-[#0B132B] border-[#D4AF37]/30 text-white' : 'bg-[#FAF8F5] border-[#D6C7B2] text-gray-900'
         }`}
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white"
+          className={`absolute top-4 right-4 p-2 rounded-full transition-colors ${
+            isDark ? 'hover:bg-white/10 text-gray-400 hover:text-white' : 'hover:bg-black/10 text-gray-500 hover:text-gray-900'
+          }`}
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -67,16 +69,16 @@ export const SerendipityModal: React.FC<SerendipityModalProps> = ({
           <Sparkles className="w-3.5 h-3.5" /> Serendipity Roulette
         </div>
 
-        <h3 className="font-editorial text-3xl font-normal mb-2">
+        <h3 className="font-editorial text-2xl sm:text-3xl font-normal mb-2">
           Let Fate Choose Your Horizon
         </h3>
-        <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto mb-6">
+        <p className={`text-xs sm:text-sm max-w-md mx-auto mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           Sometimes the most profound journeys begin without a map or premeditated agenda.
         </p>
 
         {revealedDest ? (
-          <div className="animate-fade-in mb-6">
-            <div className="relative h-64 rounded-2xl overflow-hidden border border-white/20 shadow-xl mb-4 group">
+          <div className="animate-fade-in mb-4 sm:mb-6">
+            <div className="relative h-56 sm:h-64 rounded-2xl overflow-hidden border border-white/20 shadow-xl mb-4 group">
               <img
                 src={revealedDest.heroImage}
                 alt={revealedDest.name}
@@ -86,7 +88,7 @@ export const SerendipityModal: React.FC<SerendipityModalProps> = ({
                 <span className="text-xs uppercase tracking-wider text-[#D4AF37] font-semibold flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" /> {revealedDest.country} • {revealedDest.region}
                 </span>
-                <h4 className="font-editorial text-3xl text-white font-normal mt-0.5">
+                <h4 className="font-editorial text-2xl sm:text-3xl text-white font-normal mt-0.5">
                   {revealedDest.name}
                 </h4>
                 <p className="text-xs text-amber-200/90 italic font-serif">
@@ -101,7 +103,9 @@ export const SerendipityModal: React.FC<SerendipityModalProps> = ({
                   onSelectDestination(revealedDest);
                   onClose();
                 }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold border border-white/20 hover:border-[#D4AF37] transition-all"
+                className={`w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold border transition-all ${
+                  isDark ? 'border-white/20 hover:border-[#D4AF37] text-white' : 'border-black/20 hover:border-[#9A7B38] text-gray-900'
+                }`}
               >
                 Explore Sanctuary
               </button>
@@ -117,7 +121,9 @@ export const SerendipityModal: React.FC<SerendipityModalProps> = ({
               <button
                 onClick={handleSpin}
                 disabled={spinning}
-                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all"
+                className={`p-2.5 rounded-xl transition-all ${
+                  isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/10 hover:bg-black/15 text-gray-900'
+                }`}
                 title="Spin Again"
                 aria-label="Spin again"
               >
@@ -126,7 +132,7 @@ export const SerendipityModal: React.FC<SerendipityModalProps> = ({
             </div>
           </div>
         ) : (
-          <div className="py-12">
+          <div className="py-10 sm:py-12">
             <div className="w-24 h-24 mx-auto rounded-full border-2 border-dashed border-[#D4AF37] flex items-center justify-center mb-6 text-[#D4AF37]">
               <Compass className={`w-12 h-12 ${spinning ? 'animate-spin text-amber-300' : ''}`} />
             </div>

@@ -26,110 +26,116 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
     setSubmitted(false);
   };
 
+  const fieldCls = `w-full px-4 py-2.5 rounded-xl border focus:outline-none ${
+    isDark
+      ? 'border-white/15 bg-white/5 text-white placeholder-gray-500 focus:border-[#D4AF37]'
+      : 'border-black/15 bg-black/5 text-gray-900 placeholder-gray-500 focus:border-[#9A7B38]'
+  }`;
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-14 sm:space-y-20">
       
       {/* Manifesto Section */}
-      <section className="text-center max-w-3xl mx-auto space-y-6">
-        <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block">
+      <section className="text-center max-w-3xl mx-auto space-y-5 sm:space-y-6">
+        <span className={`text-xs uppercase tracking-[0.3em] font-semibold block ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
           The Aurelia Manifesto
         </span>
-        <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-normal leading-tight [text-wrap:balance]">
+        <h1 className="font-editorial text-3xl sm:text-5xl md:text-6xl font-normal leading-tight [text-wrap:balance]">
           "Don't Just Visit Places. <br />
-          <span className="italic text-[#D4AF37]">Experience Stories."</span>
+          <span className={`italic ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>Experience Stories."</span>
         </h1>
-        <p className="text-sm sm:text-base text-gray-300 font-light leading-relaxed">
+        <p className={`text-sm sm:text-base font-light leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
           AURELIA was born out of frustration with cookie-cutter tourism portals and algorithmic homogenization. In a world flooded with superficial check-ins, we build technology that celebrates the contemplative craft of slow travel: ancient stone temples, secret coves, and quiet dialogues with local artisans.
         </p>
       </section>
 
       {/* The 4 Curatorial Pillars */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         <div className={`p-6 rounded-2xl border ${
-          isDark ? 'bg-[#0B132B] border-white/10' : 'bg-white border-[#DFD5C2]'
+          isDark ? 'bg-[#0B132B] border-white/10 text-white' : 'bg-white border-[#DFD5C2] text-gray-900 shadow-sm'
         }`}>
           <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center mb-4">
             <Sparkles className="w-5 h-5" />
           </div>
-          <h3 className="font-editorial text-xl font-normal text-white mb-2">
+          <h3 className="font-editorial text-xl font-normal mb-2">
             Curated Authenticity
           </h3>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Every sanctuary, timing, and local dish is verified against human fieldwork rather than automated scrape aggregates.
           </p>
         </div>
 
         <div className={`p-6 rounded-2xl border ${
-          isDark ? 'bg-[#0B132B] border-white/10' : 'bg-white border-[#DFD5C2]'
+          isDark ? 'bg-[#0B132B] border-white/10 text-white' : 'bg-white border-[#DFD5C2] text-gray-900 shadow-sm'
         }`}>
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center mb-4">
             <Globe className="w-5 h-5" />
           </div>
-          <h3 className="font-editorial text-xl font-normal text-white mb-2">
+          <h3 className="font-editorial text-xl font-normal mb-2">
             Indigenous Reverence
           </h3>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             We champion responsible community travel that channels economic empowerment directly to heritage custodians and families.
           </p>
         </div>
 
         <div className={`p-6 rounded-2xl border ${
-          isDark ? 'bg-[#0B132B] border-white/10' : 'bg-white border-[#DFD5C2]'
+          isDark ? 'bg-[#0B132B] border-white/10 text-white' : 'bg-white border-[#DFD5C2] text-gray-900 shadow-sm'
         }`}>
-          <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
+          <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center mb-4">
             <Shield className="w-5 h-5" />
           </div>
-          <h3 className="font-editorial text-xl font-normal text-white mb-2">
+          <h3 className="font-editorial text-xl font-normal mb-2">
             Zero Tracking & Privacy
           </h3>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             No mandatory signups, passwords, or tracking cookies. All your itineraries and bookmarks live securely in your browser.
           </p>
         </div>
 
         <div className={`p-6 rounded-2xl border ${
-          isDark ? 'bg-[#0B132B] border-white/10' : 'bg-white border-[#DFD5C2]'
+          isDark ? 'bg-[#0B132B] border-white/10 text-white' : 'bg-white border-[#DFD5C2] text-gray-900 shadow-sm'
         }`}>
-          <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-4">
+          <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-500 flex items-center justify-center mb-4">
             <Heart className="w-5 h-5" />
           </div>
-          <h3 className="font-editorial text-xl font-normal text-white mb-2">
+          <h3 className="font-editorial text-xl font-normal mb-2">
             Slow Travel Cadence
           </h3>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             We believe five days in one tranquil valley yields deeper wisdom than checking off seven cities in a rushed week.
           </p>
         </div>
       </section>
 
       {/* Contact Concierge Form */}
-      <section className={`p-8 sm:p-12 rounded-3xl border ${
+      <section className={`p-6 sm:p-12 rounded-3xl border ${
         isDark ? 'bg-[#0B132B] border-[#D4AF37]/30 text-white' : 'bg-white border-[#DFD5C2] text-gray-900 shadow-xl'
       }`}>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
           
           <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#D4AF37]">
+            <span className={`text-xs uppercase tracking-widest font-semibold ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Voyager Concierge
             </span>
             <h2 className="font-editorial text-3xl sm:text-4xl font-normal leading-tight">
               Connect with our Travel Architects
             </h2>
-            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
+            <p className={`text-xs sm:text-sm leading-relaxed font-light ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               Have questions regarding complex multi-region journeys, seasonal logistics, or bespoke recommendations? Send us a dispatch.
             </p>
 
-            <div className="pt-4 space-y-3 text-xs text-gray-300">
+            <div className={`pt-4 space-y-3 text-xs ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
               <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-[#D4AF37]" />
+                <MapPin className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
                 <span>Aurelia Travel Studios, Geneva & New Delhi</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#D4AF37]" />
+                <Mail className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
                 <span>concierge@aureliaodyssey.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#D4AF37]" />
+                <Phone className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
                 <span>+41 (0) 22 710 4400 / +91 (0) 11 4980 2000</span>
               </div>
             </div>
@@ -137,13 +143,13 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
 
           <div className="lg:col-span-7">
             {submitted ? (
-              <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 space-y-4 text-center animate-fade-in">
-                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
-                <h3 className="font-editorial text-2xl font-normal text-white">
+              <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-4 text-center animate-fade-in">
+                <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto" />
+                <h3 className={`font-editorial text-2xl font-normal ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   Dispatch Received, {fullName}
                 </h3>
-                <p className="text-xs text-gray-300 max-w-md mx-auto leading-relaxed">
-                  Thank you for reaching out to the Aurelia Concierge. In this demonstration environment, your message has been logged successfully into frontend state.
+                <p className={`text-xs max-w-md mx-auto leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                  Thank you for reaching out to the Aurelia Concierge. Your enquiry has been recorded locally in this session.
                 </p>
                 <button
                   onClick={handleResetForm}
@@ -156,7 +162,7 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
               <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                    <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                       Full Name *
                     </label>
                     <input
@@ -164,13 +170,13 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
                       required
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Lady / Lord / Traveler..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none focus:border-[#D4AF37]"
+                      placeholder="Your Name..."
+                      className={fieldCls}
                     />
                   </div>
 
                   <div>
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                    <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                       Email Address *
                     </label>
                     <input
@@ -179,20 +185,20 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="your.email@domain.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none focus:border-[#D4AF37]"
+                      className={fieldCls}
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                    <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                       Region of Interest
                     </label>
                     <select
                       value={regionInterest}
                       onChange={(e) => setRegionInterest(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none"
+                      className={fieldCls}
                     >
                       <option value="India" className="bg-slate-900 text-white">India (Rajasthan, Himalayas)</option>
                       <option value="Southeast Asia" className="bg-slate-900 text-white">Southeast & East Asia (Japan, Indonesia)</option>
@@ -205,13 +211,13 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
                   </div>
 
                   <div>
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                    <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                       Party Size
                     </label>
                     <select
                       value={travelers}
                       onChange={(e) => setTravelers(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none"
+                      className={fieldCls}
                     >
                       <option value="1" className="bg-slate-900 text-white">1 Solo Explorer</option>
                       <option value="2" className="bg-slate-900 text-white">2 Couple / Companions</option>
@@ -222,7 +228,7 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
                 </div>
 
                 <div>
-                  <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                  <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                     Your Travel Narrative or Question
                   </label>
                   <textarea
@@ -230,7 +236,7 @@ export const AboutContactPage: React.FC<AboutContactPageProps> = ({ isDark }) =>
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell us about the atmosphere, seasons, or special moments you envision..."
-                    className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none focus:border-[#D4AF37]"
+                    className={fieldCls}
                   />
                 </div>
 

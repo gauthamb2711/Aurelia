@@ -1,4 +1,9 @@
 import { Destination } from '../types/travel';
+import hampiSanctuaryImg from '../assets/images/hampi_sanctuary_1794550233708.jpg';
+import petraWadiRumImg from '../assets/images/petra_wadi_rum_1794550234343.jpg';
+import cappadociaDawnImg from '../assets/images/cappadocia_dawn_1794550234575.jpg';
+import chefchaouenMedinaImg from '../assets/images/chefchaouen_medina_1794550235243.jpg';
+import haidaGwaiiCoastImg from '../assets/images/haida_gwaii_coast_1794550235157.jpg';
 
 export const DESTINATIONS: Destination[] = [
   // ==================== INDIA ====================
@@ -113,9 +118,9 @@ export const DESTINATIONS: Destination[] = [
     country: 'India',
     region: 'India',
     coordinates: { lat: 15.3350, lng: 76.4600 },
-    heroImage: 'https://images.unsplash.com/photo-1600100397608-f010f421b920?auto=format&fit=crop&w=1800&q=85',
+    heroImage: hampiSanctuaryImg,
     gallery: [
-      'https://images.unsplash.com/photo-1600100397608-f010f421b920?auto=format&fit=crop&w=1200&q=80',
+      hampiSanctuaryImg,
       'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'A UNESCO World Heritage dreamscape of giant precariously balanced granite boulders, coracle-laden rivers, and magnificent stone chariot temples dating back to the 14th century.',
@@ -447,9 +452,9 @@ export const DESTINATIONS: Destination[] = [
     country: 'Jordan',
     region: 'Middle East',
     coordinates: { lat: 30.3285, lng: 35.4444 },
-    heroImage: 'https://images.unsplash.com/photo-1579606032822-1b156b825cf1?auto=format&fit=crop&w=1800&q=85',
+    heroImage: petraWadiRumImg,
     gallery: [
-      'https://images.unsplash.com/photo-1579606032822-1b156b825cf1?auto=format&fit=crop&w=1200&q=80',
+      petraWadiRumImg,
       'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'An ancient kingdom carved directly into rose-tinted sandstone canyons by the Nabataeans over 2,000 years ago, coupled with the vast, silent crimson desert expanses of Wadi Rum.',
@@ -541,9 +546,9 @@ export const DESTINATIONS: Destination[] = [
     country: 'Turkey',
     region: 'Middle East',
     coordinates: { lat: 38.6431, lng: 34.8289 },
-    heroImage: 'https://images.unsplash.com/photo-1641128324571-a9215d10a88f?auto=format&fit=crop&w=1800&q=85',
+    heroImage: cappadociaDawnImg,
     gallery: [
-      'https://images.unsplash.com/photo-1641128324571-a9215d10a88f?auto=format&fit=crop&w=1200&q=80',
+      cappadociaDawnImg,
       'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'A fantasy volcanic landscape of honeycombed hills, towering rock spires called fairy chimneys, early Christian cave churches, and hundreds of hot air balloons floating at dawn.',
@@ -635,9 +640,9 @@ export const DESTINATIONS: Destination[] = [
     country: 'Morocco',
     region: 'Africa',
     coordinates: { lat: 35.1716, lng: -5.2697 },
-    heroImage: 'https://images.unsplash.com/photo-1548018561-125022634354?auto=format&fit=crop&w=1800&q=85',
+    heroImage: chefchaouenMedinaImg,
     gallery: [
-      'https://images.unsplash.com/photo-1570783333454-942f21133f99?auto=format&fit=crop&w=1200&q=80',
+      chefchaouenMedinaImg,
       'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'A serene mountain village painted in myriad hues of indigo, sky blue, and cobalt. Chefchaouen blends Andalusian and Moorish aesthetics against the craggy Rif Mountains.',
@@ -822,9 +827,9 @@ export const DESTINATIONS: Destination[] = [
     country: 'Canada',
     region: 'North America',
     coordinates: { lat: 53.2500, lng: -132.0000 },
-    heroImage: 'https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=1800&q=85',
+    heroImage: haidaGwaiiCoastImg,
     gallery: [
-      'https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=1200&q=80'
+      haidaGwaiiCoastImg
     ],
     description: 'An isolated archipelago off the coast of British Columbia, home to the Haida First Nation, thousand-year-old cedar totems, temperate rainforests, and abundant orca pods.',
     editorialStory: 'Walking into SGang Gwaay under ancient moss-covered Western red cedars, weathered mortuary poles gaze toward the Pacific. Here, nature and indigenous spirituality have existed in profound equilibrium for twelve thousand years.',

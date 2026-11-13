@@ -116,15 +116,17 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in">
       <div
-        className={`relative w-full max-w-2xl rounded-3xl border shadow-2xl overflow-hidden p-6 sm:p-8 ${
+        className={`relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border shadow-2xl p-5 sm:p-8 ${
           isDark ? 'bg-[#0B132B] border-[#D4AF37]/30 text-white' : 'bg-[#FAF8F5] border-[#D6C7B2] text-gray-900'
         }`}
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white"
+          className={`sticky top-0 float-right p-2 rounded-full transition-colors ${
+            isDark ? 'hover:bg-white/10 text-gray-400 hover:text-white' : 'hover:bg-black/10 text-gray-500 hover:text-gray-900'
+          }`}
           aria-label="Close quiz"
         >
           <X className="w-5 h-5" />
@@ -133,8 +135,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         {!resultDestination ? (
           <div>
             {/* Step Indicator */}
-            <div className="flex items-center gap-2 mb-6">
-              <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-semibold flex items-center gap-1.5">
+            <div className="flex items-center gap-2 mb-5 flex-wrap">
+              <span className={`text-xs uppercase tracking-widest font-semibold flex items-center gap-1.5 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                 <Compass className="w-4 h-4" /> Destination Intuition Quiz
               </span>
               <span className="text-xs text-gray-500">
@@ -146,7 +148,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
             <h3 className="font-editorial text-2xl sm:text-3xl font-normal leading-tight mb-2">
               {QUIZ_QUESTIONS[currentStep].text}
             </h3>
-            <p className="text-xs sm:text-sm text-gray-400 mb-6">
+            <p className={`text-xs sm:text-sm mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               {QUIZ_QUESTIONS[currentStep].subtext}
             </p>
 
@@ -156,19 +158,19 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <button
                   key={opt.tag}
                   onClick={() => handleSelectOption(opt.tag)}
-                  className={`w-full p-4 rounded-2xl border text-left transition-all duration-300 flex items-start justify-between group ${
+                  className={`w-full p-4 rounded-2xl border text-left transition-all duration-300 flex items-start justify-between gap-3 group ${
                     isDark
                       ? 'border-white/10 hover:border-[#D4AF37] bg-white/5 hover:bg-white/10'
-                      : 'border-black/10 hover:border-[#9A7B38] bg-black/5 hover:bg-black/10'
+                      : 'border-[#DFD5C2] hover:border-[#9A7B38] bg-white hover:bg-[#FAF6EE]'
                   }`}
                 >
                   <div>
                     <h4 className="font-semibold text-sm sm:text-base group-hover:text-[#D4AF37] transition-colors">
                       {opt.label}
                     </h4>
-                    <p className="text-xs text-gray-400 mt-1">{opt.description}</p>
+                    <p className={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{opt.description}</p>
                   </div>
-                  <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:border-[#D4AF37] text-[#D4AF37] transition-all">
+                  <div className="w-6 h-6 rounded-full border border-[#D4AF37]/40 flex items-center justify-center flex-shrink-0 text-[#D4AF37] transition-all">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </button>
@@ -182,14 +184,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               <Sparkles className="w-3.5 h-3.5" /> 98% Soul Alignment Match
             </div>
 
-            <h3 className="font-editorial text-3xl sm:text-4xl font-normal mb-2">
+            <h3 className="font-editorial text-2xl sm:text-4xl font-normal mb-2">
               Your Sanctuary Awaits: {resultDestination.name}
             </h3>
-            <p className="text-xs sm:text-sm text-[#D4AF37] italic font-serif mb-6">
+            <p className={`text-xs sm:text-sm italic font-serif mb-6 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               "{resultDestination.tagline}"
             </p>
 
-            <div className="relative rounded-2xl overflow-hidden h-60 w-full mb-6 border border-white/20 shadow-xl">
+            <div className="relative rounded-2xl overflow-hidden h-52 sm:h-60 w-full mb-6 border border-white/20 shadow-xl">
               <img
                 src={resultDestination.heroImage}
                 alt={resultDestination.name}
@@ -208,7 +210,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                   onSelectDestination(resultDestination);
                   onClose();
                 }}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs uppercase tracking-widest font-semibold border border-white/20 hover:border-[#D4AF37] transition-all"
+                className={`w-full sm:w-auto px-6 py-3 rounded-xl text-xs uppercase tracking-widest font-semibold border transition-all ${
+                  isDark ? 'border-white/20 hover:border-[#D4AF37] text-white' : 'border-black/20 hover:border-[#9A7B38] text-gray-900'
+                }`}
               >
                 Explore Story & Details
               </button>
@@ -223,7 +227,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               </button>
               <button
                 onClick={handleReset}
-                className="p-3 rounded-xl text-gray-400 hover:text-white transition-colors"
+                className={`p-3 rounded-xl transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
                 title="Retake Quiz"
                 aria-label="Retake quiz"
               >

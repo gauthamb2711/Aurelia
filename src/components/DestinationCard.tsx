@@ -103,7 +103,7 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
       {/* Content Container */}
       <div className={`p-5 flex-1 flex flex-col justify-between ${isList ? 'md:py-6 md:pr-6 md:pl-0' : ''}`}>
         <div>
-          <p className="italic text-xs font-serif text-[#D4AF37] mb-2 line-clamp-1">
+          <p className={`italic text-xs font-serif mb-2 line-clamp-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
             "{destination.tagline}"
           </p>
           <p className={`text-xs line-clamp-2 leading-relaxed mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -113,14 +113,14 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
           {/* Key Meta Badges */}
           <div className="grid grid-cols-2 gap-2 mb-4 text-[11px]">
             <div className={`p-2 rounded-lg border ${isDark ? 'bg-white/5 border-white/5 text-gray-300' : 'bg-[#FAF6EE] border-[#ECE3D2] text-gray-700'}`}>
-              <span className="text-[10px] uppercase tracking-wider block text-gray-400">Duration</span>
+              <span className={`text-[10px] uppercase tracking-wider block ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Duration</span>
               <span className="font-semibold flex items-center gap-1 mt-0.5">
-                <Clock className="w-3 h-3 text-amber-400" /> {destination.suggestedDurationDays} Days Ideal
+                <Clock className="w-3 h-3 text-amber-500" /> {destination.suggestedDurationDays} Days Ideal
               </span>
             </div>
             <div className={`p-2 rounded-lg border ${isDark ? 'bg-white/5 border-white/5 text-gray-300' : 'bg-[#FAF6EE] border-[#ECE3D2] text-gray-700'}`}>
-              <span className="text-[10px] uppercase tracking-wider block text-gray-400">Daily Est.</span>
-              <span className="font-semibold text-emerald-400 mt-0.5 block">
+              <span className={`text-[10px] uppercase tracking-wider block ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Daily Est.</span>
+              <span className={`font-semibold mt-0.5 block ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
                 ~{formatCurrency(destination.avgDailyCostINR, currency)}
               </span>
             </div>
@@ -144,7 +144,7 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="pt-3 border-t border-white/10 flex items-center gap-2">
+        <div className={`pt-3 border-t flex items-center gap-2 ${isDark ? 'border-white/10' : 'border-black/10'}`}>
           <button
             onClick={() => onSelect(destination)}
             className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-medium tracking-wide border transition-all flex items-center justify-center gap-1.5 ${

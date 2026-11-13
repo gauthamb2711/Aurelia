@@ -241,31 +241,35 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
     exportItineraryToPDF(itineraryObj);
   };
 
+  const inputCls = `w-full px-4 py-2.5 rounded-xl border focus:outline-none ${
+    isDark ? 'border-white/15 bg-white/5 text-white focus:border-[#D4AF37]' : 'border-black/15 bg-black/5 text-gray-900 focus:border-[#9A7B38]'
+  }`;
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 sm:space-y-12">
       
       {/* Top Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block">
+        <span className={`text-xs uppercase tracking-[0.3em] font-semibold block ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
           Deterministic Recommendation Engine
         </span>
-        <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-normal leading-tight [text-wrap:balance]">
+        <h1 className="font-editorial text-3xl sm:text-5xl md:text-6xl font-normal leading-tight [text-wrap:balance]">
           DreamTrip – Bespoke Journey Architect
         </h1>
-        <p className="text-xs sm:text-sm text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+        <p className={`text-xs sm:text-sm font-light max-w-2xl mx-auto leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           Configure your travel coordinates. Our intelligent algorithm synthesizes cultural pacing, local seasonality, and realistic logistics into a fully editable day-by-day odyssey.
         </p>
       </div>
 
       {/* Control Panel / Configuration Bar */}
-      <div className={`p-6 sm:p-8 rounded-3xl border shadow-xl space-y-6 ${
+      <div className={`p-5 sm:p-8 rounded-3xl border shadow-xl space-y-6 ${
         isDark ? 'bg-[#0B132B] border-white/10' : 'bg-white border-[#DFD5C2]'
       }`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           
           {/* Destination Selector */}
           <div>
-            <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1.5">
+            <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1.5 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Destination Sanctuary
             </label>
             <select
@@ -286,7 +290,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
 
           {/* Starting City */}
           <div>
-            <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1.5">
+            <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1.5 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Origin City / Gateway
             </label>
             <input
@@ -302,10 +306,10 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
 
           {/* Duration in Days */}
           <div>
-            <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1.5">
+            <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1.5 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Duration: {daysCount} Days
             </label>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 min-h-[38px]">
               <input
                 type="range"
                 min={1}
@@ -314,13 +318,13 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                 onChange={(e) => setDaysCount(Number(e.target.value))}
                 className="w-full accent-[#D4AF37] cursor-pointer"
               />
-              <span className="text-xs font-bold text-white w-6 text-right">{daysCount}d</span>
+              <span className={`text-xs font-bold w-6 text-right ${isDark ? 'text-white' : 'text-gray-900'}`}>{daysCount}d</span>
             </div>
           </div>
 
           {/* Travelers */}
           <div>
-            <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1.5">
+            <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1.5 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Travelers: {travelersCount}
             </label>
             <select
@@ -341,7 +345,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
 
           {/* Travel Style */}
           <div>
-            <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1.5">
+            <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1.5 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Travel Style
             </label>
             <select
@@ -363,26 +367,34 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
         </div>
 
         {/* Action Row */}
-        <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
+        <div className={`pt-4 border-t flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-3 ${
+          isDark ? 'border-white/10' : 'border-black/10'
+        }`}>
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={generateNewPlan}
-              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
+              className={`px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/5 hover:bg-black/10 text-gray-900'
+              }`}
             >
-              <RotateCcw className="w-3.5 h-3.5" /> Regenerate Suggestions
+              <RotateCcw className="w-3.5 h-3.5" /> Regenerate
             </button>
             <button
               onClick={onOpenSavedModal}
-              className="px-4 py-2 rounded-xl border border-white/20 hover:border-[#D4AF37] text-gray-300 hover:text-white text-xs font-medium transition-all"
+              className={`px-4 py-2.5 rounded-xl border text-xs font-medium transition-all ${
+                isDark
+                  ? 'border-white/20 hover:border-[#D4AF37] text-gray-300 hover:text-white'
+                  : 'border-black/15 hover:border-[#9A7B38] text-gray-700 hover:text-gray-900'
+              }`}
             >
-              Open Saved Vault
+              Saved Vault
             </button>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleSaveItinerary}
-              className={`px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+              className={`flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                 isSavedFeedback
                   ? 'bg-emerald-500 text-white'
                   : 'bg-[#D4AF37] hover:bg-[#E5C158] text-[#080E1E]'
@@ -390,7 +402,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
             >
               {isSavedFeedback ? (
                 <>
-                  <Check className="w-4 h-4" /> Saved to Vault
+                  <Check className="w-4 h-4" /> Saved
                 </>
               ) : (
                 <>
@@ -401,16 +413,22 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
 
             <button
               onClick={handleExportPDF}
-              className="p-2 rounded-xl border border-[#D4AF37]/50 hover:bg-[#D4AF37]/10 text-[#D4AF37] text-xs font-semibold transition-all flex items-center gap-1.5"
+              className={`px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                isDark
+                  ? 'border-[#D4AF37]/50 hover:bg-[#D4AF37]/10 text-[#D4AF37]'
+                  : 'border-[#9A7B38]/40 hover:bg-[#9A7B38]/10 text-[#8A6F32]'
+              }`}
               title="Download Itinerary as PDF"
               aria-label="Download PDF"
             >
-              <Download className="w-4 h-4" /> Download PDF
+              <Download className="w-4 h-4" /> PDF
             </button>
 
             <button
               onClick={() => window.print()}
-              className="p-2 rounded-xl border border-white/20 hover:bg-white/10 text-white text-xs transition-all"
+              className={`p-2.5 rounded-xl border text-xs transition-all ${
+                isDark ? 'border-white/20 hover:bg-white/10 text-white' : 'border-black/15 hover:bg-black/5 text-gray-700'
+              }`}
               title="Print Itinerary"
               aria-label="Print Itinerary"
             >
@@ -421,36 +439,38 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
       </div>
 
       {/* Overview Card */}
-      <div className={`p-6 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 ${
+      <div className={`p-5 sm:p-6 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
         isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-white border-[#DFD5C2] text-gray-900 shadow-sm'
       }`}>
         <div className="flex items-center gap-4">
           <img
             src={selectedDestination.heroImage}
             alt={selectedDestination.name}
-            className="w-16 h-16 rounded-xl object-cover border border-[#D4AF37]"
+            className="w-16 h-16 rounded-xl object-cover border border-[#D4AF37] flex-shrink-0"
           />
           <div>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block">
+            <span className={`text-[10px] uppercase font-bold tracking-widest block ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
               Planned Expedition
             </span>
-            <h3 className="font-editorial text-2xl font-normal">
+            <h3 className="font-editorial text-xl sm:text-2xl font-normal">
               {selectedDestination.name}, {selectedDestination.country}
             </h3>
-            <p className="text-xs text-gray-400">
+            <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               {daysCount} Days • {travelersCount} Travelers • {travelStyle} Style
             </p>
           </div>
         </div>
 
-        <div className="text-center sm:text-right">
-          <span className="text-[10px] uppercase text-gray-400 block font-semibold">
+        <div className={`w-full sm:w-auto pt-3 sm:pt-0 border-t sm:border-t-0 text-left sm:text-right ${
+          isDark ? 'border-white/10' : 'border-black/10'
+        }`}>
+          <span className={`text-[10px] uppercase block font-semibold ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
             Total Estimated Odyssey Cost
           </span>
-          <span className="font-editorial text-3xl font-semibold text-emerald-400">
+          <span className={`font-editorial text-2xl sm:text-3xl font-semibold ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
             {formatCurrency(totalTripCostINR, currency)}
           </span>
-          <p className="text-[11px] text-gray-400">
+          <p className={`text-[11px] ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             ~{formatCurrency(totalTripCostINR / (travelersCount || 1), currency)} per traveler
           </p>
         </div>
@@ -465,7 +485,9 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
             className={`px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap border transition-all flex items-center gap-2 ${
               activeDayIndex === idx
                 ? 'bg-[#D4AF37] border-[#D4AF37] text-[#080E1E] shadow-md'
-                : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30'
+                : isDark
+                  ? 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30'
+                  : 'bg-white border-[#DFD5C2] text-gray-700 hover:border-[#9A7B38]'
             }`}
           >
             <span>Day {day.dayNumber}</span>
@@ -477,18 +499,17 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
       </div>
 
       {/* Active Day View or Full Print Area */}
-      <div className="print-area space-y-8">
+      <div className="print-area space-y-6 sm:space-y-8">
         {itineraryDays.map((day, dayIdx) => {
-          // On screen, only display active day index; for printing, all days render
           const isVisible = dayIdx === activeDayIndex;
 
           return (
             <div
               key={day.dayNumber}
-              className={`space-y-6 ${isVisible ? 'block' : 'hidden print:block'}`}
+              className={`space-y-5 sm:space-y-6 ${isVisible ? 'block' : 'hidden print:block'}`}
             >
               {/* Day Header Banner */}
-              <div className={`p-6 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+              <div className={`p-5 sm:p-6 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
                 isDark ? 'bg-[#0B132B]/90 border-[#D4AF37]/30 text-white' : 'bg-[#FAF6EE] border-[#DFD5C2] text-gray-900'
               }`}>
                 <div>
@@ -496,22 +517,22 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                     <span className="px-2.5 py-0.5 rounded-md bg-[#D4AF37] text-[#080E1E] font-bold text-xs uppercase tracking-wider">
                       Day {day.dayNumber}
                     </span>
-                    <span className="text-xs text-gray-400 font-medium">Daily Sequence</span>
+                    <span className={`text-xs font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Daily Sequence</span>
                   </div>
                   <h3 className="font-editorial text-2xl sm:text-3xl font-normal mt-1">
                     {day.theme}
                   </h3>
                   {day.notes && (
-                    <p className="text-xs text-gray-400 mt-1 italic font-light">{day.notes}</p>
+                    <p className={`text-xs mt-1 italic font-light ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{day.notes}</p>
                   )}
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="text-right">
-                    <span className="text-[10px] uppercase text-gray-400 block font-semibold">
+                <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-3 sm:pt-0 border-t sm:border-t-0 border-black/10 dark:border-white/10">
+                  <div className="text-left sm:text-right">
+                    <span className={`text-[10px] uppercase block font-semibold ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Day Total ({travelersCount} pax)
                     </span>
-                    <span className="font-semibold text-emerald-400 text-sm">
+                    <span className={`font-semibold text-sm ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
                       {formatCurrency(day.dayEstimatedCostINR, currency)}
                     </span>
                   </div>
@@ -521,7 +542,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                       setTargetDayIndex(dayIdx);
                       setShowAddModal(true);
                     }}
-                    className="no-print p-2 rounded-xl bg-[#D4AF37] hover:bg-[#E5C158] text-[#080E1E] text-xs font-semibold flex items-center gap-1 transition-all"
+                    className="no-print px-3.5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#E5C158] text-[#080E1E] text-xs font-semibold flex items-center gap-1.5 transition-all"
                     title="Add Activity to this Day"
                   >
                     <Plus className="w-3.5 h-3.5" /> Add Activity
@@ -534,37 +555,39 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                 {day.activities.map((act, actIdx) => (
                   <div
                     key={act.id}
-                    className={`p-5 rounded-2xl border transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
+                    className={`p-4 sm:p-5 rounded-2xl border transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
                       isDark
                         ? 'bg-white/5 border-white/10 hover:border-white/20 text-white'
                         : 'bg-white border-[#DFD5C2] text-gray-900 shadow-sm'
                     }`}
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 w-full">
                       {/* Slot Badge */}
-                      <div className={`w-24 px-2 py-1 rounded-lg text-center text-[11px] font-bold uppercase tracking-wider flex-shrink-0 ${
+                      <div className={`px-2.5 py-1 rounded-lg text-center text-[11px] font-bold uppercase tracking-wider flex-shrink-0 ${
                         act.timeSlot === 'Morning'
-                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                          ? isDark ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'bg-amber-100 text-amber-800 border border-amber-300'
                           : act.timeSlot === 'Afternoon'
-                            ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30'
-                            : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                            ? isDark ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30' : 'bg-sky-100 text-sky-800 border border-sky-300'
+                            : isDark ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'bg-indigo-100 text-indigo-800 border border-indigo-300'
                       }`}>
                         {act.timeSlot}
                       </div>
 
-                      <div className="space-y-1">
+                      <div className="space-y-1 flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h4 className="font-editorial text-xl font-normal leading-tight">
+                          <h4 className="font-editorial text-lg sm:text-xl font-normal leading-tight">
                             {act.title}
                           </h4>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-gray-300">
+                          <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+                            isDark ? 'bg-white/10 text-gray-300' : 'bg-black/5 text-gray-700'
+                          }`}>
                             {act.category}
                           </span>
                         </div>
-                        <p className="text-xs text-gray-400 max-w-2xl leading-relaxed">
+                        <p className={`text-xs max-w-2xl leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                           {act.description}
                         </p>
-                        <div className="flex items-center gap-4 text-[11px] text-gray-400 pt-1">
+                        <div className={`flex flex-wrap items-center gap-2 sm:gap-4 text-[11px] pt-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                           <span className="flex items-center gap-1">
                             <MapPin className="w-3 h-3 text-[#D4AF37]" /> {act.location}
                           </span>
@@ -577,20 +600,26 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                     </div>
 
                     {/* Cost & Reorder Controls */}
-                    <div className="flex items-center gap-4 self-end md:self-center w-full md:w-auto justify-between md:justify-end pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
-                      <div className="text-right">
-                        <span className="text-[10px] uppercase text-gray-400 block">Est. Cost / pax</span>
-                        <span className="text-xs font-bold text-emerald-400">
+                    <div className={`flex items-center gap-4 w-full md:w-auto justify-between md:justify-end pt-3 md:pt-0 border-t md:border-t-0 ${
+                      isDark ? 'border-white/10' : 'border-black/10'
+                    }`}>
+                      <div className="text-left md:text-right flex-shrink-0">
+                        <span className={`text-[10px] uppercase block ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Est. Cost / pax</span>
+                        <span className={`text-xs font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
                           {formatCurrency(act.estimatedCostINR, currency)}
                         </span>
                       </div>
 
                       {/* Reorder and Delete (no-print) */}
-                      <div className="flex items-center gap-1 no-print">
+                      <div className="flex items-center gap-1.5 no-print">
                         <button
                           onClick={() => moveActivityUp(dayIdx, actIdx)}
                           disabled={actIdx === 0}
-                          className="p-1.5 rounded-lg border border-white/10 hover:border-white/30 text-gray-400 hover:text-white disabled:opacity-30 disabled:hover:border-white/10"
+                          className={`p-2 rounded-lg border disabled:opacity-30 ${
+                            isDark
+                              ? 'border-white/10 hover:border-white/30 text-gray-400 hover:text-white'
+                              : 'border-black/15 hover:border-black/30 text-gray-600 hover:text-gray-900'
+                          }`}
                           title="Move earlier"
                           aria-label="Move activity earlier"
                         >
@@ -599,7 +628,11 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                         <button
                           onClick={() => moveActivityDown(dayIdx, actIdx)}
                           disabled={actIdx === day.activities.length - 1}
-                          className="p-1.5 rounded-lg border border-white/10 hover:border-white/30 text-gray-400 hover:text-white disabled:opacity-30 disabled:hover:border-white/10"
+                          className={`p-2 rounded-lg border disabled:opacity-30 ${
+                            isDark
+                              ? 'border-white/10 hover:border-white/30 text-gray-400 hover:text-white'
+                              : 'border-black/15 hover:border-black/30 text-gray-600 hover:text-gray-900'
+                          }`}
                           title="Move later"
                           aria-label="Move activity later"
                         >
@@ -607,7 +640,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                         </button>
                         <button
                           onClick={() => removeActivity(dayIdx, act.id)}
-                          className="p-1.5 rounded-lg border border-rose-500/20 text-rose-400 hover:bg-rose-500/10 ml-1"
+                          className="p-2 rounded-lg border border-rose-500/20 text-rose-500 hover:bg-rose-500/10 ml-1"
                           title="Remove activity"
                           aria-label="Remove activity"
                         >
@@ -625,20 +658,20 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
 
       {/* Add Custom Activity Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className={`relative w-full max-w-lg rounded-3xl border shadow-2xl p-6 ${
-            isDark ? 'bg-[#0B132B] border-[#D4AF37]/30 text-white' : 'bg-white border-[#DFD5C2] text-gray-900'
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+          <div className={`relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl border shadow-2xl p-6 ${
+            isDark ? 'bg-[#0B132B] border-[#D4AF37]/30 text-white' : 'bg-[#FAF8F5] border-[#DFD5C2] text-gray-900'
           }`}>
             <h3 className="font-editorial text-2xl font-normal mb-1">
               Add Activity to Day {targetDayIndex + 1}
             </h3>
-            <p className="text-xs text-gray-400 mb-6">
+            <p className={`text-xs mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               Incorporate an unscripted tea tasting, private viewpoint, or leisurely sunset stroll.
             </p>
 
             <form onSubmit={handleAddActivity} className="space-y-4 text-xs">
               <div>
-                <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                   Activity Title
                 </label>
                 <input
@@ -647,18 +680,18 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="e.g. Sunrise Yoga overlooking the Aravalis..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none focus:border-[#D4AF37]"
+                  className={inputCls}
                 />
               </div>
 
               <div>
-                <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                   Time Slot
                 </label>
                 <select
                   value={newSlot}
                   onChange={(e) => setNewSlot(e.target.value as any)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none"
+                  className={inputCls}
                 >
                   <option value="Morning" className="bg-slate-900 text-white">Morning</option>
                   <option value="Afternoon" className="bg-slate-900 text-white">Afternoon</option>
@@ -667,7 +700,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
               </div>
 
               <div>
-                <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                   Location / Monument
                 </label>
                 <input
@@ -675,12 +708,12 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                   value={newLocation}
                   onChange={(e) => setNewLocation(e.target.value)}
                   placeholder="e.g. Gangaur Ghat, Udaipur"
-                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none"
+                  className={inputCls}
                 />
               </div>
 
               <div>
-                <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                   Description
                 </label>
                 <textarea
@@ -688,12 +721,12 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                   value={newDesc}
                   onChange={(e) => setNewDesc(e.target.value)}
                   placeholder="Detailed notes for the traveler..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none"
+                  className={inputCls}
                 />
               </div>
 
               <div>
-                <label className="text-[10px] uppercase font-bold tracking-widest text-[#D4AF37] block mb-1">
+                <label className={`text-[10px] uppercase font-bold tracking-widest block mb-1 ${isDark ? 'text-[#D4AF37]' : 'text-[#8A6F32]'}`}>
                   Estimated Cost (INR per person)
                 </label>
                 <input
@@ -702,7 +735,7 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                   step={100}
                   value={newCost}
                   onChange={(e) => setNewCost(Number(e.target.value))}
-                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white focus:outline-none"
+                  className={inputCls}
                 />
               </div>
 
@@ -710,13 +743,13 @@ export const DreamTripPage: React.FC<DreamTripPageProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 rounded-xl text-gray-400 hover:text-white"
+                  className={`px-4 py-2 rounded-xl ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#E5C158] text-[#080E1E] font-bold"
+                  className="px-6 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#E5C158] text-[#080E1E] font-bold"
                 >
                   Confirm & Add
                 </button>
